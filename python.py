@@ -6,7 +6,12 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return render_template('random.html', options=get_state())
+    return render_template('random.html', options=get_state_options())
+
+@app.route('/funFact')
+def render_fun_fact():
+    state_chosen = request.args['states']
+    return render_template('random.html', options=get_state_options(), funFact=fun_fact_by_state(state_chosen))
   
 def get_state_options():
     listOfStates = []
@@ -21,6 +26,8 @@ def get_state_options():
     return options
 
 def fun_fact_by_state(state):
+    with open('county_demographics.json') as demographics_data:
+        counties = json.load(demographics_data)
     first_county = "ZZZZZZZZ"
     for county in counties:
         if county["County"] < first_county and county["State"] == state:
