@@ -14,5 +14,5 @@ def get_state_options():
   stats_list = lists(states)
   #Second step is to create a string containing HTML code for the option in the select element 
   
-  if __name__=="__main__":
-    app.run(debug=False, port=54321)
+  if __name__=='__main__':
+    app.run(debug=True)
