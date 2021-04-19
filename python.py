@@ -8,10 +8,13 @@ app = Flask(__name__)
 def home():
     return render_template('home.html', options=get_state_options())
 
-@app.route('/funFact')
+@app.route('/funFact', mthods=['GET', 'POST'])
 def render_fun_fact():
-    state_chosen = request.args['states']
-    return render_template('home.html', options=get_state_options(), funFact=fun_fact_by_state(state_chosen))
+    if request.method == "post""
+        state_chosen = request.form['states']
+        return render_template('home.html', options=get_state_options(), funFact=fun_fact_by_state(state_chosen))
+    else:
+        return render_template('home.html', options=get_state_options())
   
 def get_state_options():
     listOfStates = []
