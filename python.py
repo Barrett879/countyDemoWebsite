@@ -10,7 +10,7 @@ def home():
 
 @app.route('/funFact', mthods=['GET', 'POST'])
 def render_fun_fact():
-    if request.method == "post""
+    if request.method == "POST":
         state_chosen = request.form['states']
         return render_template('home.html', options=get_state_options(), funFact=fun_fact_by_state(state_chosen))
     else:
